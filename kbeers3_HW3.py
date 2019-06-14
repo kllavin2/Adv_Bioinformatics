@@ -14,20 +14,11 @@ Transform the gene features of a .gff3 format to BED
 gff3 = "yeast.gff3"
 
 #parse gff3 file
-with open(gff3, 'r', newline=None) as f:
+with open(gff3, 'r') as f:
     lines = f.readlines()
-
-with open(gff3, 'w') as f:
+print(len(lines))
+with open("yeast_parsed.gff3", 'w') as f:
     for line in lines:
-        if line.strip('\n') != "#":
-            f.write(line)
-            feature = line
-            
-
-            
-            
-            
-            
-        
-        
-        
+        if line.startswith('#'):
+            continue
+        f.write(line)
